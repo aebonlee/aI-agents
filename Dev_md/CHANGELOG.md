@@ -95,3 +95,91 @@
   - SETUP_GUIDE.md - 설치 및 개발 환경 가이드
   - DEPLOYMENT.md - 빌드 및 배포 가이드
   - CHANGELOG.md - 변경 이력 (이 문서)
+
+---
+
+## [1.1.0] - 2026-04-04
+
+### CSS 클래스명 정렬 - JSX 컴포넌트 매칭
+
+CSS 파일들의 클래스명이 실제 JSX 컴포넌트에서 사용하는 클래스명과 불일치하는 문제를 전면 수정.
+약 150개 이상의 클래스명 매핑 오류를 해결하여 모든 스타일이 정상 적용되도록 함.
+
+#### 변경된 CSS 파일 (10개)
+
+##### `src/styles/hero.css` - 전면 재작성
+- 캐러셀 시스템: `.carousel-viewport`, `.carousel-track`, `.carousel-slide`
+- 히어로 콘텐츠: `.hero-content` (단일 열 flex), `.highlight` (그라디언트 텍스트)
+- `.hero-desc` → `.hero-description`, `.hero-actions` → `.hero-buttons`
+- 캐러셀 네비게이션: `.carousel-arrow`, `.carousel-arrow-left/right`, `.carousel-dots`, `.carousel-dot`
+- 스크롤 인디케이터: `.scroll-indicator`, `.mouse`, `.wheel`, `.scroll-text`
+- 배경 애니메이션: `.particles`, `.particle` (`particleFloat` keyframe)
+- 네트워크 배경: `.network-canvas`, `.network-node` (`nodeFloat` keyframe)
+- 오브 배경: `.orbs-container`, `.orb` (`orbRise` keyframe)
+- 기하학적 배경: `.geo-container`, `.geo-shape`, `.geo-triangle/square/hexagon` (`geoFloat` keyframe)
+
+##### `src/styles/home.css` - 전면 재작성
+- 피쳐 섹션: `.features-section` → `.home-features-section`, `.features-grid` → `.home-features-grid`, `.feature-card` → `.home-feature-card`, `.feature-icon` → `.home-feature-icon`
+- 워크플로우 섹션: `.process-section` → `.home-workflow-section`, `.process-steps` → `.home-workflow-grid`, `.process-step` → `.home-workflow-step`, `.home-workflow-icon`, `.home-workflow-step-num`, `.home-workflow-arrow`
+- 도구 섹션: `.tools-section` → `.home-tools-section`, `.tools-grid` → `.home-tools-grid`, `.tool-card` → `.home-tool-card`, `.home-tool-number`, `.home-tool-icon`
+- 통계 섹션: `.stats-section` → `.home-stats-section`, `.stats-grid` → `.home-stats-grid`, `.stat-item` → `.home-stat`, `.stat-number` → `.home-stat-number`, `.stat-label` → `.home-stat-label`, `.home-stat-desc`
+- CTA 섹션: `.cta-section` → `.home-cta-section`, `.cta-content` → `.home-cta-content`, `.cta-actions` → `.home-cta-buttons`
+- FAQ 섹션: `.faq-list`, `.faq-item`, `.faq-question`, `.faq-question-icon`, `.faq-question-text`, `.faq-toggle-icon`, `.faq-answer`
+
+##### `src/styles/navbar.css` - 추가
+- `.nav-item`, `.user-menu`, `.user-avatar`, `.logout-btn`, `.login-link`
+
+##### `src/styles/footer.css` - 전면 재작성
+- `.footer-grid` → `.footer-content` (3열 그리드: 2fr 1fr 1.5fr)
+- `.brand-agent`, `.brand-lab` (로고 텍스트)
+- `.footer-desc` → `.footer-description`
+- `.footer-link-list`, `.footer-email`, `.footer-email-icon`, `.business-hours`
+- `.footer-family` (패밀리 사이트 셀렉트)
+
+##### `src/styles/content-pages.css` - 전면 재작성
+- `.content-layout` → `.content-page-layout` (280px 사이드바 + 1fr)
+- `.sidebar-nav-btn` (hover/active 상태)
+- `.framework-grid`, `.framework-item` (2열 그리드, 좌측 보더)
+- `.info-box` (기본 파란), `.info-box.tip` (초록), `.info-box.warning` (노란)
+- `.example-box`, `.example-box pre` (다크 코드 블록)
+- 커리큘럼: `.curriculum-tabs`, `.curriculum-tab`, `.curriculum-session-card`, `.curriculum-session-type` (lecture/practice/workshop/presentation)
+- 실습자료: `.materials-grid`, `.material-card`, `.material-icon`, `.material-meta`, `.material-format`, `.material-pages`
+- 도구: `.tools-grid`, `.tool-card`, `.tool-icon`, `.tool-name-group`, `.tool-category`, `.tool-usecase`
+
+##### `src/styles/cases.css` - 전면 재작성
+- `.cases-layout` (300px 사이드바 + 1fr 그리드)
+- `.cases-sidebar` (sticky), `.cases-menu`, `.cases-menu-item` (active 상태)
+- `.cases-cards`, `.case-card` (수평 flex)
+- `.case-card-icon`, `.case-card-body`, `.case-card-title`, `.case-card-desc`, `.case-card-tags`, `.case-tag`
+
+##### `src/styles/login.css` - 추가
+- `.login-buttons`, `.login-btn`, `.login-icon`
+- `.google-btn`, `.kakao-btn` (JSX 매칭)
+
+##### `src/styles/base.css` - 추가
+- `.section-badge` (상단 배지 스타일)
+- `.not-found-icon` (404 아이콘)
+
+##### `src/styles/dark-mode.css` - 클래스명 정렬
+- `.feature-card` → `.home-feature-card`, `.feature-icon` → `.home-feature-icon`
+- `.process-step-number` → `.home-workflow-step-num`
+- `.sidebar-nav-item` → `.sidebar-nav-btn` + `.cases-menu-item` 다크모드 추가
+- `.info-box-info/warning/success/error` → `.info-box`, `.info-box.warning`, `.info-box.tip`
+- `.social-btn-google/kakao` → `.google-btn`, `.kakao-btn`
+- `.case-card-tag` → `.case-tag`, `.faq-answer-content` → `.faq-answer`
+- 미사용 클래스 제거 (`program-card`, `testimonial-card`, `news-card` 등)
+
+##### `src/styles/responsive.css` - 전면 재작성
+- 모든 홈 섹션: `home-*` 접두사 클래스로 변경
+- 히어로: `.hero-description`, `.hero-buttons`, `.carousel-arrow-*`, `.carousel-dots`, `.scroll-indicator`
+- 레이아웃: `.content-page-layout`, `.cases-layout` 태블릿 반응형 추가
+- CTA: `.home-cta-content h2/p`, `.home-cta-buttons`
+- FAQ: `.faq-answer`
+- 로그인: `.login-btn`
+- 미사용 클래스 제거 (`programs-grid`, `testimonials-grid`, `news-grid`, `partners-grid` 등)
+- 인쇄 스타일: `.carousel-dots`, `.carousel-arrow-*`, `.scroll-indicator`, `.cases-sidebar`
+
+#### 기술적 상세
+- JSX 파일은 수정하지 않음 (CSS를 JSX에 맞춤)
+- 빌드 성공: 357ms
+- 최종 CSS 번들: 75.26KB (gzip 12.80KB)

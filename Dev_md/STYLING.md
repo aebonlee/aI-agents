@@ -99,12 +99,16 @@
 | 입력 배경 | #FFFFFF | #1E293B |
 
 ### 오버라이드 대상
-- 모든 카드 (feature, program, content, case, post)
+- 모든 카드 (home-feature-card, case-card, content-card, tool-card, curriculum-session-card, material-card, login-card, profile-card)
 - 네비바, 푸터
 - 폼 요소 (input, select, textarea)
 - 탭, 필터 버튼
-- 정보 박스 (info, warning, success, error)
+- 사이드바 (sidebar-nav-btn, cases-menu-item)
+- 정보 박스 (.info-box, .info-box.warning, .info-box.tip)
 - 코드 블록, 인용문
+- 로그인 (google-btn, kakao-btn)
+- FAQ (faq-item, faq-question, faq-answer)
+- 배지 (case-tag, section-badge)
 - 스크롤바
 - 컬러 피커 드롭다운
 
@@ -159,17 +163,65 @@
 | 클래스 | 용도 |
 |--------|------|
 | `.container` | 최대 1280px 중앙 정렬 |
-| `.content-page-layout` | 사이드바 + 메인 2열 |
-| `.content-sidebar` | 280px 고정 사이드바 |
+| `.content-page-layout` | 사이드바(280px) + 메인 2열 그리드 |
+| `.content-sidebar` | 280px sticky 사이드바 |
 | `.content-main` | 유동 메인 영역 |
+| `.cases-layout` | 사례 사이드바(300px) + 메인 2열 그리드 |
+| `.cases-sidebar` | 300px sticky 사이드바 |
+
+### 홈 페이지 (home-* 접두사)
+| 클래스 | 용도 |
+|--------|------|
+| `.home-features-section` | 피쳐 섹션 래퍼 |
+| `.home-features-grid` | 4열 피쳐 그리드 |
+| `.home-feature-card` | 피쳐 카드 (좌측 보더) |
+| `.home-feature-icon` | 피쳐 아이콘 (64px) |
+| `.home-workflow-section` | 워크플로우 섹션 래퍼 |
+| `.home-workflow-grid` | 4열 워크플로우 그리드 |
+| `.home-workflow-step` | 워크플로우 단계 |
+| `.home-workflow-step-num` | 단계 번호 (48px 원형) |
+| `.home-tools-section` | 도구 섹션 래퍼 |
+| `.home-tools-grid` | 3열 도구 그리드 |
+| `.home-tool-card` | 도구 카드 |
+| `.home-stats-section` | 통계 섹션 래퍼 |
+| `.home-stats-grid` | 4열 통계 그리드 |
+| `.home-stat` | 통계 아이템 |
+| `.home-stat-number` | 통계 숫자 |
+| `.home-stat-label` | 통계 라벨 |
+| `.home-cta-section` | CTA 섹션 (그라디언트) |
+| `.home-cta-content` | CTA 콘텐츠 래퍼 |
+| `.home-cta-buttons` | CTA 버튼 그룹 |
+
+### 히어로 캐러셀
+| 클래스 | 용도 |
+|--------|------|
+| `.hero` | 히어로 섹션 |
+| `.carousel-viewport` | 캐러셀 뷰포트 |
+| `.carousel-track` | 캐러셀 트랙 (슬라이드 이동) |
+| `.carousel-slide` | 개별 슬라이드 |
+| `.carousel-arrow-left/right` | 좌우 화살표 |
+| `.carousel-dots` | 도트 인디케이터 컨테이너 |
+| `.carousel-dot` | 개별 도트 |
+| `.hero-description` | 히어로 설명 텍스트 |
+| `.hero-buttons` | 히어로 버튼 그룹 |
+| `.scroll-indicator` | 스크롤 안내 애니메이션 |
 
 ### 카드
 | 클래스 | 용도 |
 |--------|------|
 | `.card` | 기본 카드 (호버 그림자) |
 | `.content-card` | 콘텐츠 카드 (패딩, 보더) |
-| `.case-card` | 사례 카드 (아이콘, 태그) |
-| `.feature-card` | 피쳐 카드 (상단 보더) |
+| `.case-card` | 사례 카드 (수평 flex, 아이콘+본문) |
+| `.case-tag` | 사례 태그 (pill 형태) |
+| `.tool-card` | 도구 카드 (상단 보더) |
+| `.curriculum-session-card` | 커리큘럼 세션 카드 |
+| `.material-card` | 실습자료 카드 |
+
+### 사이드바 네비게이션
+| 클래스 | 용도 |
+|--------|------|
+| `.sidebar-nav-btn` | 콘텐츠 사이드바 버튼 (hover/active) |
+| `.cases-menu-item` | 사례 사이드바 메뉴 아이템 |
 
 ### 버튼
 | 클래스 | 용도 |
@@ -180,10 +232,31 @@
 | `.btn-primary-large` | 큰 기본 버튼 |
 | `.btn-sm` | 작은 버튼 |
 
+### 로그인
+| 클래스 | 용도 |
+|--------|------|
+| `.login-btn` | 소셜 로그인 버튼 베이스 |
+| `.google-btn` | 구글 로그인 버튼 |
+| `.kakao-btn` | 카카오 로그인 버튼 |
+
 ### 정보 박스
 | 클래스 | 색상 |
 |--------|------|
 | `.info-box` | 기본 (파란) |
-| `.info-box-warning` | 경고 (노란) |
-| `.info-box-success` | 성공 (초록) |
-| `.info-box-error` | 에러 (빨간) |
+| `.info-box.warning` | 경고 (노란) |
+| `.info-box.tip` | 도움말 (초록) |
+
+### FAQ
+| 클래스 | 용도 |
+|--------|------|
+| `.faq-list` | FAQ 목록 컨테이너 |
+| `.faq-item` | FAQ 아이템 (아코디언) |
+| `.faq-question` | 질문 버튼 (클릭 가능) |
+| `.faq-answer` | 답변 영역 (열림/닫힘) |
+
+### 배지 및 유틸리티
+| 클래스 | 용도 |
+|--------|------|
+| `.section-badge` | 섹션 상단 배지 (pill) |
+| `.badge` | 일반 배지 |
+| `.badge-primary` | 프라이머리 배지 |

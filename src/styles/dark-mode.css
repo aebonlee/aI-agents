@@ -62,36 +62,32 @@ html[data-theme="dark"] .hero {
 
 /* Cards Dark Mode */
 html[data-theme="dark"] .card,
-html[data-theme="dark"] .feature-card,
-html[data-theme="dark"] .program-card,
-html[data-theme="dark"] .testimonial-card,
-html[data-theme="dark"] .news-card,
+html[data-theme="dark"] .home-feature-card,
 html[data-theme="dark"] .case-card,
 html[data-theme="dark"] .content-card,
-html[data-theme="dark"] .post-detail-card,
+html[data-theme="dark"] .curriculum-session-card,
+html[data-theme="dark"] .material-card,
+html[data-theme="dark"] .tool-card,
 html[data-theme="dark"] .login-card,
-html[data-theme="dark"] .profile-card,
-html[data-theme="dark"] .write-post-card,
-html[data-theme="dark"] .community-stat-card,
-html[data-theme="dark"] .leaderboard {
+html[data-theme="dark"] .profile-card {
     background: var(--bg-white);
     border-color: var(--border-light);
 }
 
 /* Feature Icon Dark */
-html[data-theme="dark"] .feature-icon {
+html[data-theme="dark"] .home-feature-icon {
     background: var(--bg-light-gray);
 }
-html[data-theme="dark"] .feature-card:hover .feature-icon {
+html[data-theme="dark"] .home-feature-card:hover .home-feature-icon {
     background: var(--primary-blue);
 }
 
-/* Process Step Dark */
-html[data-theme="dark"] .process-step-number {
+/* Workflow Step Dark */
+html[data-theme="dark"] .home-workflow-step-num {
     background: var(--bg-white);
 }
-html[data-theme="dark"] .process-steps::before {
-    background: var(--border-light);
+html[data-theme="dark"] .home-workflow-icon {
+    background: var(--bg-light-gray);
 }
 
 /* Buttons Dark Mode */
@@ -183,11 +179,19 @@ html[data-theme="dark"] .post-vote-btn {
 }
 
 /* Sidebar Dark */
-html[data-theme="dark"] .sidebar-nav-item:hover {
+html[data-theme="dark"] .sidebar-nav-btn:hover {
     background: var(--bg-light-gray);
 }
-html[data-theme="dark"] .sidebar-nav-item.active {
+html[data-theme="dark"] .sidebar-nav-btn.active {
     background: rgba(61, 109, 181, 0.15);
+    color: var(--primary-blue-light);
+}
+html[data-theme="dark"] .cases-menu-item:hover {
+    background: var(--bg-light-gray);
+}
+html[data-theme="dark"] .cases-menu-item.active {
+    background: rgba(61, 109, 181, 0.15);
+    border-color: rgba(61, 109, 181, 0.25);
     color: var(--primary-blue-light);
 }
 
@@ -230,40 +234,35 @@ html[data-theme="dark"] .toc {
 }
 
 /* Info Boxes Dark */
-html[data-theme="dark"] .info-box-info {
+html[data-theme="dark"] .info-box {
     background: rgba(59, 130, 246, 0.1);
     border-color: rgba(59, 130, 246, 0.2);
     color: #93C5FD;
 }
-html[data-theme="dark"] .info-box-warning {
+html[data-theme="dark"] .info-box.warning {
     background: rgba(245, 158, 11, 0.1);
     border-color: rgba(245, 158, 11, 0.2);
     color: #FCD34D;
 }
-html[data-theme="dark"] .info-box-success {
+html[data-theme="dark"] .info-box.tip {
     background: rgba(16, 185, 129, 0.1);
     border-color: rgba(16, 185, 129, 0.2);
     color: #6EE7B7;
-}
-html[data-theme="dark"] .info-box-error {
-    background: rgba(239, 68, 68, 0.1);
-    border-color: rgba(239, 68, 68, 0.2);
-    color: #FCA5A5;
 }
 
 /* Login Dark */
 html[data-theme="dark"] .login-page {
     background: #0B1120;
 }
-html[data-theme="dark"] .social-btn-google {
+html[data-theme="dark"] .google-btn {
     background: var(--bg-light-gray);
     border-color: var(--border-light);
     color: var(--text-primary);
 }
-html[data-theme="dark"] .social-btn-google:hover {
+html[data-theme="dark"] .google-btn:hover {
     background: var(--bg-medium-gray);
 }
-html[data-theme="dark"] .social-btn-kakao {
+html[data-theme="dark"] .kakao-btn {
     background: #FEE500;
     color: #000000;
 }
@@ -286,10 +285,8 @@ html[data-theme="dark"] .badge {
     background: var(--bg-light-gray);
     color: var(--text-secondary);
 }
-html[data-theme="dark"] .case-card-tag,
-html[data-theme="dark"] .program-badge,
-html[data-theme="dark"] .post-category,
-html[data-theme="dark"] .post-detail-category {
+html[data-theme="dark"] .case-tag,
+html[data-theme="dark"] .section-badge {
     background: rgba(61, 109, 181, 0.15);
     color: var(--primary-blue-light);
 }
@@ -450,7 +447,7 @@ html[data-theme="dark"] .faq-question {
 html[data-theme="dark"] .faq-question:hover {
     color: var(--primary-blue-light);
 }
-html[data-theme="dark"] .faq-answer-content {
+html[data-theme="dark"] .faq-answer {
     color: var(--text-secondary);
 }
 

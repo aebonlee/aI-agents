@@ -50,7 +50,61 @@
     color: var(--text-secondary);
 }
 
-/* Social Login Buttons */
+/* Login Buttons (JSX class names) */
+.login-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+.login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-light);
+    cursor: pointer;
+    transition: var(--transition-base);
+    text-decoration: none;
+    font-family: inherit;
+}
+.login-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+.login-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.google-btn {
+    background: #FFFFFF;
+    color: var(--text-primary);
+    border-color: var(--border-light);
+}
+.google-btn:hover {
+    background: #F8F9FA;
+    border-color: #DADCE0;
+}
+.kakao-btn {
+    background: #FEE500;
+    color: #000000;
+    border-color: #FEE500;
+}
+.kakao-btn:hover {
+    background: #FFEB3B;
+    border-color: #FFEB3B;
+}
+
+/* Social Login Buttons (legacy) */
 .social-login {
     display: flex;
     flex-direction: column;
