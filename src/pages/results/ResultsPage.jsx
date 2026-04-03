@@ -112,6 +112,38 @@ const RESULTS = {
 2. Learn from past incidents → Proactive similar risk pattern alerts
 3. Regulation changes → AI summary → Auto-update training materials`,
     },
+    {
+      titleKo: '공공기관 민원 응대 AI Agent 아이디어',
+      titleEn: 'Public Institution Civil Service AI Agent Idea',
+      descKo: '공공기관의 민원 응대 업무를 AI Agent로 지원하여 초기 분류, FAQ 자동응답, 답변 초안 작성을 자동화하는 아이디어입니다.',
+      descEn: 'An idea to support public institution civil service with AI Agent for initial categorization, FAQ auto-response, and draft reply generation.',
+      contentKo: `[아이디어 개요]
+- 대상 업무: 민원 접수 분류, 반복 민원 자동 응대, 답변서 초안 작성
+- 적용 AI: ChatGPT (답변 생성), Claude (민원 분석), Perplexity (관련 법규 조사)
+
+[기대 효과]
+- 민원 초기 분류 자동화로 담당자 배정 시간 70% 단축
+- 반복 민원 자동 응답으로 응대 건수 40% 절감
+- 답변 초안 작성 시간 50% 단축
+
+[구현 방안]
+1. 민원 접수 → AI 분류 → 담당부서 자동 배정
+2. FAQ 데이터베이스 기반 → 유사 민원 자동 응답
+3. 복잡 민원 → AI 답변 초안 생성 → 담당자 검토 후 발송`,
+      contentEn: `[Idea Overview]
+- Target Tasks: Civil complaint classification, repetitive inquiry auto-response, reply draft generation
+- Applied AI: ChatGPT (reply generation), Claude (complaint analysis), Perplexity (legal research)
+
+[Expected Benefits]
+- 70% reduction in complaint assignment time through auto-classification
+- 40% reduction in response volume through FAQ auto-responses
+- 50% reduction in reply draft creation time
+
+[Implementation Plan]
+1. Complaint received → AI classification → Auto-assign to responsible department
+2. FAQ database-based → Auto-respond to similar complaints
+3. Complex complaints → AI draft reply → Staff review and send`,
+    },
   ],
   'agent-design': [
     {
@@ -173,6 +205,72 @@ const RESULTS = {
 3. References previous minutes for continuity
 4. Review Agent checks logic/format
 5. Output final document`,
+    },
+    {
+      titleKo: '리서치 자동화 Agent 설계서',
+      titleEn: 'Research Automation Agent Design',
+      descKo: '산업 동향, 경쟁사 분석 등의 리서치 업무를 자동화하는 AI Agent 설계서 예시입니다.',
+      descEn: 'Design document example for an AI Agent that automates research tasks such as industry trends and competitor analysis.',
+      contentKo: `[Agent 설계 캔버스]
+
+■ Agent 이름: ResearchBot Agent
+■ 역할: 주제 기반 리서치를 자동 수행하고 구조화된 보고서를 생성하는 AI 리서처
+■ 목표: 리서치 보고서 작성 시간을 70% 단축
+
+■ 입력(Input)
+- 리서치 주제 및 키워드
+- 조사 범위 (국내/해외, 기간)
+- 출력 형식 지정 (보고서/표/비교분석)
+
+■ 출력(Output)
+- 구조화된 리서치 보고서
+- 출처 목록 및 신뢰도 평가
+- 핵심 인사이트 요약
+
+■ 사용 도구
+- Perplexity (웹 기반 리서치)
+- Genspark (심층 분석)
+- Claude (보고서 구조화 및 검토)
+- Napkin AI (데이터 시각화)
+
+■ 워크플로우
+1. 사용자가 리서치 주제와 범위 입력
+2. Perplexity로 1차 정보 수집
+3. Genspark으로 심층 분석 수행
+4. Claude로 수집 정보 구조화 및 보고서 초안 작성
+5. 검토 Agent가 출처 신뢰성 및 논리 검증
+6. Napkin AI로 주요 데이터 시각화
+7. 최종 보고서 출력`,
+      contentEn: `[Agent Design Canvas]
+
+■ Agent Name: ResearchBot Agent
+■ Role: AI researcher that auto-performs topic-based research and generates structured reports
+■ Goal: Reduce research report creation time by 70%
+
+■ Input
+- Research topic and keywords
+- Research scope (domestic/international, period)
+- Output format specification (report/table/comparison)
+
+■ Output
+- Structured research report
+- Source list and reliability assessment
+- Key insight summary
+
+■ Tools
+- Perplexity (web-based research)
+- Genspark (deep analysis)
+- Claude (report structuring and review)
+- Napkin AI (data visualization)
+
+■ Workflow
+1. User inputs research topic and scope
+2. Primary information gathering via Perplexity
+3. Deep analysis via Genspark
+4. Claude structures collected info and drafts report
+5. Review Agent verifies source reliability and logic
+6. Napkin AI visualizes key data
+7. Output final report`,
     },
   ],
   'action-plan': [
@@ -237,6 +335,68 @@ Phase 3 (Week 9-12): Evaluation & Expansion
 - 50%+ reduction in meeting material creation time
 - User satisfaction 4.0/5.0 or higher
 - 20+ Agent utilizations per month`,
+    },
+    {
+      titleKo: '부서 AI 역량 강화 교육 계획서',
+      titleEn: 'Department AI Capability Training Plan',
+      descKo: '부서 구성원의 AI 활용 역량을 단계적으로 강화하기 위한 6개월 교육 실행 계획서 예시입니다.',
+      descEn: 'Example 6-month training plan for progressively strengthening department members\' AI utilization capabilities.',
+      contentKo: `[계획 개요]
+- 과제명: 경영지원부 AI 역량 강화 프로그램
+- 기간: 6개월
+- 대상: 부서원 15명 (초급 8명, 중급 5명, 고급 2명)
+
+[단계별 교육 계획]
+Step 1 (1~2개월): AI 기초 역량
+- 생성형 AI 개념 및 도구 소개 (4시간)
+- 프롬프트 작성 기초 실습 (4시간)
+- 개인별 AI 도구 계정 설정 및 기본 활용
+- 목표: 전원 기본 프롬프트 작성 가능
+
+Step 2 (3~4개월): 업무 적용 실습
+- 부서 업무별 AI 활용 실습 (8시간)
+- 프롬프트 템플릿 제작 워크숍 (4시간)
+- 주 1회 AI 활용 과제 수행
+- 목표: 주 3회 이상 업무에 AI 활용
+
+Step 3 (5~6개월): AI Agent 설계 및 자동화
+- AI Agent 설계 캔버스 워크숍 (4시간)
+- 부서 맞춤형 Agent 프로토타입 개발 (8시간)
+- 성과 발표 및 우수 사례 공유
+- 목표: 팀별 1개 이상 Agent 프로토타입 완성
+
+[성과 측정]
+- 월별 AI 활용 건수 추적
+- 업무 효율화 시간 측정 (Before/After)
+- 분기별 만족도 조사`,
+      contentEn: `[Plan Overview]
+- Project: Management Support Dept. AI Capability Program
+- Duration: 6 months
+- Target: 15 department members (8 beginner, 5 intermediate, 2 advanced)
+
+[Phased Training Plan]
+Step 1 (Month 1-2): AI Basic Capabilities
+- Generative AI concepts and tools introduction (4 hours)
+- Basic prompt writing practice (4 hours)
+- Individual AI tool account setup and basic usage
+- Goal: All members can write basic prompts
+
+Step 2 (Month 3-4): Work Application Practice
+- Department task-specific AI utilization practice (8 hours)
+- Prompt template creation workshop (4 hours)
+- Weekly AI utilization assignments
+- Goal: Use AI in work 3+ times per week
+
+Step 3 (Month 5-6): AI Agent Design & Automation
+- AI Agent design canvas workshop (4 hours)
+- Department-customized Agent prototype development (8 hours)
+- Performance presentation and best practice sharing
+- Goal: Complete 1+ Agent prototype per team
+
+[Performance Measurement]
+- Monthly AI utilization count tracking
+- Work efficiency time measurement (Before/After)
+- Quarterly satisfaction survey`,
     },
   ],
   presentation: [
@@ -317,6 +477,78 @@ Slide 11: Risks & Mitigation
 Slide 12: Q&A
 - Key message summary
 - Questions and answers`,
+    },
+    {
+      titleKo: 'AX 추진 경영보고 발표자료 예시',
+      titleEn: 'AX Initiative Executive Report Presentation',
+      descKo: '부서 또는 기관 차원의 AX(AI Transformation) 추진 현황을 경영진에게 보고하는 발표자료 구성 예시입니다.',
+      descEn: 'Example presentation structure for reporting AX (AI Transformation) progress to executives at department or institutional level.',
+      contentKo: `[발표자료 구성 (8슬라이드)]
+
+슬라이드 1: 표지
+- AX 추진 현황 보고
+- 부서명, 보고일, 보고자
+
+슬라이드 2: 추진 배경
+- 외부 환경 변화 (AI 기술 발전, 정부 정책)
+- 내부 필요성 (업무 효율화 요구, 인력 변화)
+
+슬라이드 3: 추진 경과
+- 타임라인 (교육 → 시범 적용 → 성과 측정)
+- 주요 마일스톤 달성 현황
+
+슬라이드 4: 주요 성과
+- 정량 성과 (시간 절감, 비용 절감, 처리 건수)
+- 정성 성과 (업무 품질, 직원 만족도)
+
+슬라이드 5: 활용 사례 Best 3
+- 사례별 Before/After 비교
+- 적용 AI 도구 및 방법
+
+슬라이드 6: 향후 계획
+- 확산 대상 (부서, 업무)
+- 단계별 로드맵
+
+슬라이드 7: 소요 예산 및 자원
+- 항목별 예산 (교육, 도구, 인프라)
+- 투자 대비 기대 효과 (ROI)
+
+슬라이드 8: 건의 사항
+- 경영진 의사결정 요청 항목
+- 지원 필요 사항`,
+      contentEn: `[Presentation Structure (8 Slides)]
+
+Slide 1: Cover
+- AX Progress Report
+- Department, date, presenter
+
+Slide 2: Background
+- External changes (AI technology advancement, government policy)
+- Internal needs (efficiency demands, workforce changes)
+
+Slide 3: Progress Summary
+- Timeline (training → pilot application → performance measurement)
+- Key milestone achievement status
+
+Slide 4: Key Results
+- Quantitative (time savings, cost reduction, processing volume)
+- Qualitative (work quality, employee satisfaction)
+
+Slide 5: Top 3 Use Cases
+- Before/After comparison per case
+- Applied AI tools and methods
+
+Slide 6: Future Plans
+- Expansion targets (departments, tasks)
+- Phased roadmap
+
+Slide 7: Budget & Resources
+- Budget by category (education, tools, infrastructure)
+- Expected ROI
+
+Slide 8: Recommendations
+- Executive decision request items
+- Support requirements`,
     },
   ],
 };

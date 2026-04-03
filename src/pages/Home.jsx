@@ -108,22 +108,22 @@ export default function Home() {
         <div className="container">
           <div className="home-stats-grid">
             <div className="home-stat">
-              <div className="home-stat-number">4+</div>
+              <div className="home-stat-number">4</div>
               <div className="home-stat-label">{t('home.statCurriculum')}</div>
               <div className="home-stat-desc">{ko ? '8시간 기본부터 프로젝트형까지' : 'From 8-hour basic to project-based'}</div>
             </div>
             <div className="home-stat">
-              <div className="home-stat-number">20+</div>
+              <div className="home-stat-number">14+</div>
               <div className="home-stat-label">{t('home.statTemplates')}</div>
               <div className="home-stat-desc">{ko ? '워크시트, 캔버스, 프롬프트' : 'Worksheets, canvas, prompts'}</div>
             </div>
             <div className="home-stat">
-              <div className="home-stat-number">15+</div>
+              <div className="home-stat-number">14+</div>
               <div className="home-stat-label">{t('home.statCases')}</div>
               <div className="home-stat-desc">{ko ? '발전사, 공공기관, 대학, 기업' : 'Power, public, university, enterprise'}</div>
             </div>
             <div className="home-stat">
-              <div className="home-stat-number">40+</div>
+              <div className="home-stat-number">28+</div>
               <div className="home-stat-label">{t('home.statHours')}</div>
               <div className="home-stat-desc">{ko ? '다양한 커리큘럼 총 교육시간' : 'Total hours across all curricula'}</div>
             </div>

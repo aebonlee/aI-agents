@@ -60,7 +60,7 @@ Current status and future prospects of AI adoption in the domestic power generat
         promptKo: `당신은 AI 기술 전문가입니다.
 
 [분석 주제]
-2024~2025 AI Agent 기술 트렌드 분석
+2025~2026 AI Agent 기술 트렌드 분석
 
 [분석 관점]
 1. 주요 AI Agent 플랫폼 비교 (OpenAI, Anthropic, Google)
@@ -75,7 +75,7 @@ Current status and future prospects of AI adoption in the domestic power generat
         promptEn: `You are an AI technology expert.
 
 [Analysis Topic]
-2024-2025 AI Agent Technology Trend Analysis
+2025-2026 AI Agent Technology Trend Analysis
 
 [Analysis Perspective]
 1. Major AI Agent platform comparison (OpenAI, Anthropic, Google)
@@ -121,6 +121,40 @@ Current status and future prospects of AI adoption in the domestic power generat
 
 [Meeting Minutes]
 (Paste meeting minutes text here)`,
+      },
+      {
+        titleKo: '보고서 핵심 요약',
+        titleEn: 'Report Executive Summary',
+        promptKo: `당신은 문서 분석 전문가입니다. 아래 보고서를 경영진에게 보고할 수 있는 수준으로 요약해주세요.
+
+[요약 규칙]
+1. 전체 내용을 1페이지(A4) 이내로 축약
+2. 핵심 수치와 데이터는 반드시 포함
+3. "그래서 어떻게 해야 하는가"(So What)를 명확히 제시
+
+[요약 구조]
+- 핵심 결론 (1~2문장)
+- 주요 발견 사항 (3~5개 불릿포인트)
+- 핵심 수치 요약 (표 형식)
+- 시사점 및 제언
+
+[보고서]
+(여기에 보고서 텍스트를 붙여넣기)`,
+        promptEn: `You are a document analysis expert. Summarize the report below to an executive-ready level.
+
+[Summary Rules]
+1. Condense the entire content within 1 page (A4)
+2. Must include key figures and data
+3. Clearly present the "So What" implications
+
+[Summary Structure]
+- Key Conclusion (1-2 sentences)
+- Major Findings (3-5 bullet points)
+- Key Metrics Summary (table format)
+- Implications and Recommendations
+
+[Report]
+(Paste report text here)`,
       },
     ],
   },
@@ -171,6 +205,60 @@ AX Proposal for In-House AI Agent Adoption
 - Executive-level reporting format
 - Include specific figures and cases
 - A4 5-7 page length`,
+      },
+      {
+        titleKo: '업무 프로세스 분석 보고서',
+        titleEn: 'Work Process Analysis Report',
+        promptKo: `당신은 업무 프로세스 개선 전문 컨설턴트입니다.
+
+[작성 문서]
+현재 업무 프로세스 분석 및 AI Agent 적용 방안 보고서
+
+[분석 대상 업무]
+(업무명과 간단한 설명 입력)
+
+[보고서 구성]
+1. 현행 업무 프로세스 현황
+   - 업무 흐름도 (텍스트 기반)
+   - 각 단계별 소요 시간 및 투입 인력
+   - 비효율 요인 식별
+2. AI Agent 적용 가능 영역
+   - 자동화 가능 업무 (반복적, 정형화된 업무)
+   - AI 보조 가능 업무 (판단이 필요한 업무)
+   - 인간 필수 업무 (창의적, 대면 업무)
+3. 개선 방안 및 기대 효과
+   - 예상 시간 절감률
+   - 품질 향상 포인트
+4. 추진 우선순위 및 로드맵
+
+[조건]
+- 현업 담당자가 이해할 수 있는 수준
+- Before/After 비교 형태 포함`,
+        promptEn: `You are a work process improvement consultant.
+
+[Document]
+Current Work Process Analysis and AI Agent Application Report
+
+[Target Work]
+(Enter task name and brief description)
+
+[Report Structure]
+1. Current Work Process Status
+   - Workflow diagram (text-based)
+   - Time and personnel per step
+   - Inefficiency factors identified
+2. AI Agent Applicable Areas
+   - Automatable tasks (repetitive, structured)
+   - AI-assistable tasks (requiring judgment)
+   - Human-essential tasks (creative, face-to-face)
+3. Improvement Plan and Expected Benefits
+   - Expected time savings rate
+   - Quality improvement points
+4. Prioritization and Roadmap
+
+[Conditions]
+- Understandable by field staff
+- Include Before/After comparison format`,
       },
     ],
   },
@@ -223,6 +311,48 @@ For each perspective:
 
 [Action Plan]
 (Paste action plan here)`,
+      },
+      {
+        titleKo: '문서 품질 검토',
+        titleEn: 'Document Quality Review',
+        promptKo: `당신은 공공기관 문서 작성 전문가이자 품질 검토자입니다.
+
+아래 문서를 다음 기준으로 검토해주세요:
+
+[검토 기준]
+1. 논리 구조: 서론-본론-결론의 흐름이 자연스러운가
+2. 근거 충실도: 주장에 대한 데이터/사례가 충분한가
+3. 표현 적절성: 보고 대상에 맞는 격식과 용어를 사용하는가
+4. 형식 완성도: 표, 그래프, 번호 매기기 등이 일관되는가
+5. 오류 점검: 오탈자, 수치 오류, 날짜 불일치 등
+
+[출력 형식]
+- 총평 (100자 이내)
+- 항목별 평가 (5점 척도 + 코멘트)
+- 수정 필요 사항 (우선순위 순)
+- 수정 예시 (Before → After)
+
+[문서]
+(여기에 검토할 문서를 붙여넣기)`,
+        promptEn: `You are a public institution document writing expert and quality reviewer.
+
+Review the document below against these criteria:
+
+[Review Criteria]
+1. Logic Structure: Is the intro-body-conclusion flow natural?
+2. Evidence Quality: Is there sufficient data/cases for claims?
+3. Expression Appropriateness: Are formality and terms suitable for the audience?
+4. Format Completeness: Are tables, charts, numbering consistent?
+5. Error Check: Typos, numerical errors, date inconsistencies, etc.
+
+[Output Format]
+- Overall Assessment (within 100 characters)
+- Per-criteria evaluation (5-point scale + comments)
+- Required corrections (by priority)
+- Correction examples (Before → After)
+
+[Document]
+(Paste document to review here)`,
       },
     ],
   },
@@ -282,6 +412,58 @@ A system where AI Agent automatically drafts meeting materials
 - Operable by non-development departments
 - Include milestones per phase`,
       },
+      {
+        titleKo: '부서 AI 역량 강화 계획',
+        titleEn: 'Department AI Capability Plan',
+        promptKo: `당신은 조직 내 AI 교육 및 역량 강화 전문가입니다.
+
+아래 조건에 맞는 부서 AI 역량 강화 실행 계획을 수립해주세요.
+
+[대상 부서]
+(부서명, 인원수, 주요 업무 입력)
+
+[계획 구성]
+1. 현황 진단
+   - 부서 업무 중 AI 적용 가능 영역 식별
+   - 구성원 디지털 역량 수준 분류 (초급/중급/고급)
+2. 교육 계획
+   - 단계별 교육 프로그램 (기초 → 실습 → 적용)
+   - 교육 일정 및 방식 (집합/온라인/OJT)
+3. 실습 과제
+   - 부서 실무에 바로 적용 가능한 AI 활용 과제 3개
+4. 성과 관리
+   - 월별 활용 목표 및 측정 방법
+   - 우수 활용 사례 공유 체계
+
+[조건]
+- 6개월 계획
+- 업무 병행 가능한 수준의 학습 부담
+- 구체적인 일정과 담당자 포함`,
+        promptEn: `You are an organizational AI education and capability building expert.
+
+Create a department AI capability enhancement plan under these conditions.
+
+[Target Department]
+(Enter department name, headcount, main tasks)
+
+[Plan Structure]
+1. Current Status Assessment
+   - Identify AI-applicable areas in department work
+   - Classify member digital capability levels (beginner/intermediate/advanced)
+2. Education Plan
+   - Phased program (basics → hands-on → application)
+   - Schedule and methods (in-person/online/OJT)
+3. Practice Assignments
+   - 3 AI utilization tasks directly applicable to department work
+4. Performance Management
+   - Monthly utilization targets and measurement methods
+   - Best practice sharing system
+
+[Conditions]
+- 6-month plan
+- Learning load manageable alongside regular work
+- Include specific schedule and responsible persons`,
+      },
     ],
   },
   meeting: {
@@ -335,6 +517,64 @@ A system where AI Agent automatically drafts meeting materials
 - Concise and clear writing
 - Bullet-point focused
 - A4 1-2 page length`,
+      },
+      {
+        titleKo: '경영 브리핑 자료',
+        titleEn: 'Management Briefing Material',
+        promptKo: `당신은 경영진 보고 전문 비서입니다.
+
+아래 정보를 바탕으로 임원 브리핑 자료를 작성해주세요.
+
+[브리핑 주제]
+(주제 입력)
+
+[입력 정보]
+- 배경: (간단한 배경 설명)
+- 핵심 데이터: (관련 수치나 현황)
+- 의사결정 필요 사항: (경영진에게 요청할 사항)
+
+[출력 구조]
+1. Executive Summary (3줄 이내)
+2. 현황 및 배경 (핵심만 간결하게)
+3. 주요 이슈 및 분석
+   - 이슈별 팩트 + 시사점
+4. 대안 비교 (있을 경우)
+   - 표 형식으로 장단점 비교
+5. 건의 사항 / 의사결정 요청
+6. 향후 일정
+
+[스타일]
+- 핵심만 담은 간결한 문체
+- 숫자와 팩트 중심
+- 시각적 구분 (불릿, 표, 강조) 활용
+- A4 2~3페이지 분량`,
+        promptEn: `You are an executive reporting specialist assistant.
+
+Create a management briefing document based on the information below.
+
+[Briefing Topic]
+(Enter topic)
+
+[Input Information]
+- Background: (brief background description)
+- Key Data: (relevant figures or status)
+- Decision Required: (what to request from management)
+
+[Output Structure]
+1. Executive Summary (within 3 lines)
+2. Current Status & Background (concise essentials only)
+3. Key Issues & Analysis
+   - Facts + implications per issue
+4. Alternative Comparison (if applicable)
+   - Pros/cons comparison in table format
+5. Recommendations / Decision Request
+6. Upcoming Schedule
+
+[Style]
+- Concise writing with essentials only
+- Numbers and facts focused
+- Visual distinction (bullets, tables, emphasis)
+- A4 2-3 page length`,
       },
     ],
   },

@@ -5,10 +5,10 @@ import HeroBackground from './HeroBackground';
 
 const SLIDES = [
   { bgType: 'particles' },
-  { bgType: 'particles' },
   { bgType: 'network' },
   { bgType: 'orbs' },
   { bgType: 'geometric' },
+  { bgType: 'particles' },
 ];
 
 export default function HeroCarousel() {

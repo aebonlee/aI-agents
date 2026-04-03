@@ -29,9 +29,9 @@ export const CURRICULUM_TYPES = [
 ];
 
 export const CASE_CATEGORIES = [
-  { id: 'power-company', nameKo: '발전 공기업 사례', nameEn: 'Power Company Cases', icon: 'fa-industry' },
-  { id: 'public-org', nameKo: '공공기관 혁신 사례', nameEn: 'Public Org Cases', icon: 'fa-landmark' },
-  { id: 'automation', nameKo: '조직 내 보고·협업 자동화 사례', nameEn: 'Automation Cases', icon: 'fa-robot' },
-  { id: 'research', nameKo: '리서치 및 자료정리 사례', nameEn: 'Research Cases', icon: 'fa-magnifying-glass-chart' },
-  { id: 'ideation', nameKo: '아이디어 구체화 사례', nameEn: 'Ideation Cases', icon: 'fa-lightbulb' },
+  { id: 'power', nameKo: '발전 공기업', nameEn: 'Power Companies', icon: 'fa-bolt' },
+  { id: 'public', nameKo: '공공기관', nameEn: 'Public Institutions', icon: 'fa-building-columns' },
+  { id: 'university', nameKo: '대학', nameEn: 'Universities', icon: 'fa-graduation-cap' },
+  { id: 'enterprise', nameKo: '일반기업', nameEn: 'Enterprises', icon: 'fa-briefcase' },
+  { id: 'custom', nameKo: '맞춤형 AX', nameEn: 'Custom AX', icon: 'fa-sliders' },
 ];
