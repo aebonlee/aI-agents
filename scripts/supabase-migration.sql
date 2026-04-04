@@ -60,17 +60,28 @@ ALTER TABLE agent_posts ENABLE ROW LEVEL SECURITY;
 ALTER TABLE agent_comments ENABLE ROW LEVEL SECURITY;
 
 -- agent_profiles: 누구나 조회, 본인만 수정
+DROP POLICY IF EXISTS "agent_profiles_select" ON agent_profiles;
+DROP POLICY IF EXISTS "agent_profiles_insert" ON agent_profiles;
+DROP POLICY IF EXISTS "agent_profiles_update" ON agent_profiles;
 CREATE POLICY "agent_profiles_select" ON agent_profiles FOR SELECT USING (true);
 CREATE POLICY "agent_profiles_insert" ON agent_profiles FOR INSERT WITH CHECK (auth.uid() = id);
 CREATE POLICY "agent_profiles_update" ON agent_profiles FOR UPDATE USING (auth.uid() = id);
 
 -- agent_posts: 누구나 조회, 본인만 작성/수정/삭제
+DROP POLICY IF EXISTS "agent_posts_select" ON agent_posts;
+DROP POLICY IF EXISTS "agent_posts_insert" ON agent_posts;
+DROP POLICY IF EXISTS "agent_posts_update" ON agent_posts;
+DROP POLICY IF EXISTS "agent_posts_delete" ON agent_posts;
 CREATE POLICY "agent_posts_select" ON agent_posts FOR SELECT USING (true);
 CREATE POLICY "agent_posts_insert" ON agent_posts FOR INSERT WITH CHECK (auth.uid() = author_id);
 CREATE POLICY "agent_posts_update" ON agent_posts FOR UPDATE USING (auth.uid() = author_id);
 CREATE POLICY "agent_posts_delete" ON agent_posts FOR DELETE USING (auth.uid() = author_id);
 
 -- agent_comments: 누구나 조회, 본인만 작성/수정/삭제
+DROP POLICY IF EXISTS "agent_comments_select" ON agent_comments;
+DROP POLICY IF EXISTS "agent_comments_insert" ON agent_comments;
+DROP POLICY IF EXISTS "agent_comments_update" ON agent_comments;
+DROP POLICY IF EXISTS "agent_comments_delete" ON agent_comments;
 CREATE POLICY "agent_comments_select" ON agent_comments FOR SELECT USING (true);
 CREATE POLICY "agent_comments_insert" ON agent_comments FOR INSERT WITH CHECK (auth.uid() = author_id);
 CREATE POLICY "agent_comments_update" ON agent_comments FOR UPDATE USING (auth.uid() = author_id);
@@ -110,10 +121,12 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+DROP TRIGGER IF EXISTS agent_profiles_updated_at ON agent_profiles;
 CREATE TRIGGER agent_profiles_updated_at
   BEFORE UPDATE ON agent_profiles
   FOR EACH ROW EXECUTE FUNCTION update_agent_updated_at();
 
+DROP TRIGGER IF EXISTS agent_posts_updated_at ON agent_posts;
 CREATE TRIGGER agent_posts_updated_at
   BEFORE UPDATE ON agent_posts
   FOR EACH ROW EXECUTE FUNCTION update_agent_updated_at();
