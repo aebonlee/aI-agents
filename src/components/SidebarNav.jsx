@@ -7,27 +7,18 @@ export default function SidebarNav({ groups, activeId, onSelect, headingKo, head
 
   const findGroupForId = (id) => groups.find(g => g.items.some(item => item.id === id));
 
-  const [openGroups, setOpenGroups] = useState(() => {
-    const initial = new Set();
+  const [openGroup, setOpenGroup] = useState(() => {
     const group = findGroupForId(activeId);
-    if (group) initial.add(group.id);
-    return initial;
+    return group ? group.id : null;
   });
 
   useEffect(() => {
     const group = findGroupForId(activeId);
-    if (group && !openGroups.has(group.id)) {
-      setOpenGroups(prev => new Set(prev).add(group.id));
-    }
+    if (group) setOpenGroup(group.id);
   }, [activeId]);
 
   const toggleGroup = (groupId) => {
-    setOpenGroups(prev => {
-      const next = new Set(prev);
-      if (next.has(groupId)) next.delete(groupId);
-      else next.add(groupId);
-      return next;
-    });
+    setOpenGroup(prev => prev === groupId ? null : groupId);
   };
 
   return (
@@ -35,7 +26,7 @@ export default function SidebarNav({ groups, activeId, onSelect, headingKo, head
       <h3>{ko ? headingKo : headingEn}</h3>
       <nav className="sidebar-nav">
         {groups.map(group => {
-          const open = openGroups.has(group.id);
+          const open = openGroup === group.id;
           return (
             <div key={group.id} className="sidebar-nav-group">
               <button
