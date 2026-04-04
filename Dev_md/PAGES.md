@@ -45,18 +45,39 @@
 
 **파일**: `src/pages/learning/LearningPage.jsx`
 
-### 사이드바 + 콘텐츠 레이아웃 (8개 섹션)
+### 사이드바 + 콘텐츠 레이아웃 (16개 섹션, 4개 그룹)
 
+**기초 이론 (3개 섹션)**:
 | 섹션 ID | 한국어 | 영어 | 아이콘 |
 |---------|--------|------|--------|
 | `overview` | 학습 안내 | Learning Guide | fa-compass |
 | `ai-basics` | 생성형 AI의 이해 | Understanding Generative AI | fa-microchip |
 | `ai-agent` | AI Agent 개론 | AI Agent Introduction | fa-robot |
+
+**핵심 역량 (3개 섹션)**:
+| 섹션 ID | 한국어 | 영어 | 아이콘 |
+|---------|--------|------|--------|
 | `agent-types` | AI Agent 유형과 구조 | Agent Types & Architecture | fa-diagram-project |
 | `prompt-theory` | 프롬프트 엔지니어링 | Prompt Engineering Theory | fa-pencil-ruler |
 | `task-decomposition` | 업무 분해 방법론 | Task Decomposition | fa-sitemap |
+
+**심화 학습 (2개 섹션)**:
+| 섹션 ID | 한국어 | 영어 | 아이콘 |
+|---------|--------|------|--------|
 | `advanced-concepts` | 심화 개념 | Advanced Concepts | fa-layer-group |
 | `learning-path` | 학습 로드맵 | Learning Roadmap | fa-route |
+
+**실습도구 (8개 섹션)** — v2.5.0 추가:
+| 섹션 ID | 한국어 | 영어 | 아이콘 |
+|---------|--------|------|--------|
+| `tools-overview` | 도구 개요 | Tools Overview | fa-grid-2 |
+| `chatgpt` | ChatGPT (GPT-4o) | ChatGPT (GPT-4o) | fa-comments |
+| `claude` | Claude (Sonnet/Opus) | Claude (Sonnet/Opus) | fa-file-lines |
+| `gemini` | Gemini | Gemini | fa-diamond |
+| `genspark` | Genspark | Genspark | fa-magnifying-glass-chart |
+| `perplexity` | Perplexity | Perplexity | fa-searchengin |
+| `napkin` | Napkin AI | Napkin AI | fa-chart-diagram |
+| `tools-environment` | 실습 환경 안내 | Practice Environment | fa-laptop-code |
 
 ### 섹션별 콘텐츠 요약
 
@@ -68,6 +89,9 @@
 6. **업무 분해 방법론** - IPO 프레임워크, 4단계 방법론, 주간보고 분해 예시표, `/materials` 연결
 7. **심화 개념** - RAG, Function Calling, 멀티 에이전트, AI Agent 플랫폼 4종
 8. **학습 로드맵** - 4단계 학습 경로, 전체 콘텐츠 8개 바로가기, CTA
+9. **도구 개요** - 6개 AI 도구 카드 그리드, 클릭 시 상세 전환
+10. **ChatGPT~Napkin AI** - 도구별 상세 (카테고리, 설명, 외부 링크, 주요 기능 5개, 팁 5개, 프롬프트 2개)
+11. **실습 환경 안내** - 노트북/계정/네트워크/브라우저 요구사항, 도구별 바로가기 링크
 
 ### 재사용 CSS 클래스
 `content-page`, `content-page-layout`, `content-sidebar`, `sidebar-nav-btn`, `content-card`, `framework-grid`, `framework-item`, `info-box`, `info-box.tip`, `example-box`
