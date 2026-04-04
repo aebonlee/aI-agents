@@ -154,16 +154,16 @@ function MyComponent() {
 
 #### Kakao OAuth
 1. Kakao Developers에서 앱 생성
-2. 플랫폼 > Web > 사이트 도메인: `https://ai-agent.dreamitbiz.com`
+2. 플랫폼 > Web > 사이트 도메인: `https://ai-agents.dreamitbiz.com`
 3. Redirect URI: `https://hcmgdztsgjvzcyxyayaj.supabase.co/auth/v1/callback`
 4. Supabase Dashboard > Authentication > Providers > Kakao > Enable
 5. REST API Key와 Client Secret 입력
 
 ### 2. Authentication > URL Configuration
-- Site URL: `https://ai-agent.dreamitbiz.com`
+- Site URL: `https://ai-agents.dreamitbiz.com`
 - Redirect URLs:
-  - `https://ai-agent.dreamitbiz.com`
-  - `https://ai-agent.dreamitbiz.com/**`
+  - `https://ai-agents.dreamitbiz.com`
+  - `https://ai-agents.dreamitbiz.com/**`
   - `http://localhost:5176` (개발용)
 
 ### 3. 데이터베이스 테이블 (선택)

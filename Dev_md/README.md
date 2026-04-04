@@ -8,7 +8,7 @@
 |------|------|
 | **프로젝트명** | AI Agents Work Lab |
 | **설명** | 실무형 AI Agent 업무혁신 교육 플랫폼 |
-| **라이브 URL** | https://ai-agent.dreamitbiz.com |
+| **라이브 URL** | https://ai-agents.dreamitbiz.com |
 | **저장소** | https://github.com/aebonlee/aI-agent |
 | **기술 스택** | React 19 + Vite 8 (SPA) |
 | **인증** | Supabase (Google + Kakao OAuth) |

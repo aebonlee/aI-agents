@@ -4,7 +4,7 @@
 
 **AI Agents Work Lab**은 공공기관, 발전사, 기업, 대학 등에서 활용 가능한 **실무형 AI Agent 교육 플랫폼**입니다.
 
-- **URL**: https://ai-agent.dreamitbiz.com
+- **URL**: https://ai-agents.dreamitbiz.com
 - **기술 스택**: React 19 + Vite 8 + Supabase + CSS (vanilla)
 - **배포**: GitHub Pages (gh-pages)
 - **현재 버전**: v2.8.0
@@ -226,6 +226,6 @@ npm run deploy     # GitHub Pages 배포 (gh-pages)
 ## 배포 구성
 
 - **호스팅**: GitHub Pages
-- **도메인**: ai-agent.dreamitbiz.com (CNAME)
+- **도메인**: ai-agents.dreamitbiz.com (CNAME)
 - **빌드 도구**: Vite 8
 - **배포 스크립트**: `gh-pages -d dist`

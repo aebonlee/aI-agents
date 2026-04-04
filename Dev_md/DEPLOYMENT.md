@@ -5,11 +5,11 @@
 | 항목 | 내용 |
 |------|------|
 | **호스팅** | GitHub Pages |
-| **도메인** | https://ai-agent.dreamitbiz.com |
+| **도메인** | https://ai-agents.dreamitbiz.com |
 | **저장소** | https://github.com/aebonlee/aI-agent |
 | **배포 브랜치** | `gh-pages` (자동 생성) |
 | **소스 브랜치** | `main` |
-| **CNAME** | `public/CNAME` → `ai-agent.dreamitbiz.com` |
+| **CNAME** | `public/CNAME` → `ai-agents.dreamitbiz.com` |
 
 ---
 
@@ -114,7 +114,7 @@ npm run deploy
 |------|-----|
 | Source | Deploy from a branch |
 | Branch | `gh-pages` / `/ (root)` |
-| Custom domain | `ai-agent.dreamitbiz.com` |
+| Custom domain | `ai-agents.dreamitbiz.com` |
 | Enforce HTTPS | ✅ |
 
 ### DNS 설정 (도메인 호스팅)

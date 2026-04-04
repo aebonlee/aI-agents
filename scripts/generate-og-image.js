@@ -50,7 +50,7 @@ async function generateOGImage() {
 
       <!-- Bottom bar -->
       <rect x="0" y="590" width="${width}" height="40" fill="rgba(0,0,0,0.3)"/>
-      <text x="80" y="616" font-family="Arial,sans-serif" font-size="16" fill="rgba(255,255,255,0.6)">ai-agent.dreamitbiz.com</text>
+      <text x="80" y="616" font-family="Arial,sans-serif" font-size="16" fill="rgba(255,255,255,0.6)">ai-agents.dreamitbiz.com</text>
       <text x="1120" y="616" font-family="Arial,sans-serif" font-size="16" fill="rgba(255,255,255,0.4)" text-anchor="end">DreamIT Biz</text>
 
       <!-- Feature chips -->

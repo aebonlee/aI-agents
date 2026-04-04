@@ -8,7 +8,7 @@
 - Vite 8 + React 19 프로젝트 생성
 - 의존성 설치: react-router-dom, supabase, react-markdown, remark-gfm, sharp, gh-pages
 - Git 저장소 초기화 및 GitHub 원격 연결
-- GitHub Pages 커스텀 도메인 설정 (ai-agent.dreamitbiz.com)
+- GitHub Pages 커스텀 도메인 설정 (ai-agents.dreamitbiz.com)
 
 #### 코어 인프라 (9개 파일)
 - `.env` - Supabase 환경 변수 (VITE_ 접두사)
@@ -19,7 +19,7 @@
 - `src/contexts/AuthContext.jsx` - 인증 (Google + Kakao OAuth)
 - `src/utils/translations.js` - 전체 Ko/En 번역 사전
 - `vite.config.js` - 포트 5176, 함수형 manualChunks
-- `public/CNAME` - ai-agent.dreamitbiz.com
+- `public/CNAME` - ai-agents.dreamitbiz.com
 
 #### 레이아웃 컴포넌트 (5개 파일)
 - `src/components/layout/Navbar.jsx` - 글래스모피즘 네비바 (데스크톱+모바일)
@@ -69,7 +69,7 @@
 - Vite 8 (Rolldown) 프로덕션 빌드 성공 (~385ms)
 - OG 이미지 생성 (1200x630 PNG)
 - GitHub Pages 배포 (gh-pages 브랜치)
-- 라이브: https://ai-agent.dreamitbiz.com
+- 라이브: https://ai-agents.dreamitbiz.com
 
 #### 기술적 해결 사항
 - Vite 8 Rolldown에서 `manualChunks` 객체→함수 변환 필요 (빌드 에러 수정)

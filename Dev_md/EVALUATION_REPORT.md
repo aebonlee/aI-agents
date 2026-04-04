@@ -2,7 +2,7 @@
 
 **평가일**: 2026-04-04
 **최종 버전**: v2.7.0
-**사이트 URL**: https://ai-agent.dreamitbiz.com
+**사이트 URL**: https://ai-agents.dreamitbiz.com
 **기술 스택**: React 19 + Vite 8 (Rolldown) + Supabase + GitHub Pages
 **개발 기간**: 2026-04-02 ~ 2026-04-04 (3일)
 **총 커밋**: 20개
@@ -247,7 +247,7 @@
 | 메뉴 | 상단 7개 + 푸터 8개 |
 | 커밋 | 20개 |
 | 빌드 출력 | 18개 청크 (JS 11 + CSS 1 + HTML 1 + Static 5) |
-| 배포 | GitHub Pages (ai-agent.dreamitbiz.com) |
+| 배포 | GitHub Pages (ai-agents.dreamitbiz.com) |
 | DB 테이블 | 3개 (agent_profiles, agent_posts, agent_comments) |
 
 ---
