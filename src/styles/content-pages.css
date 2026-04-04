@@ -70,7 +70,9 @@
 }
 
 /* Sidebar Accordion Group */
-.sidebar-nav-group { }
+.sidebar-nav-group + .sidebar-nav-group {
+    margin-top: 6px;
+}
 
 .sidebar-nav-group-toggle {
     display: flex;
@@ -78,11 +80,11 @@
     gap: 8px;
     padding: 10px 16px;
     width: 100%;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     color: var(--text-light);
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
     cursor: pointer;
     background: none;
     border: none;
@@ -137,10 +139,12 @@
     gap: 2px;
 }
 
-/* Nested items indent */
+/* Nested items */
 .sidebar-nav-group-items .sidebar-nav-btn {
-    padding-left: 36px;
-    font-size: 13px;
+    padding-left: 40px;
+    font-size: 12.5px;
+    gap: 0;
+    line-height: 1.5;
 }
 
 /* Content Main */

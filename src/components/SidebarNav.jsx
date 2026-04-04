@@ -56,7 +56,6 @@ export default function SidebarNav({ groups, activeId, onSelect, headingKo, head
                       className={`sidebar-nav-btn ${activeId === item.id ? 'active' : ''}`}
                       onClick={() => onSelect(item.id)}
                     >
-                      <i className={`fa-solid ${item.icon}`} aria-hidden="true" />
                       {ko ? item.titleKo : item.titleEn}
                     </button>
                   ))}
