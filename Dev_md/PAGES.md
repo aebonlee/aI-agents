@@ -8,7 +8,7 @@
 | `/learning` | LearningPage.jsx | 학습하기 |
 | `/course` | CoursePage.jsx | 과정소개 및 커리큘럼 |
 | `/curriculum` | → `/course` 리다이렉트 | (v2.0.0에서 통합) |
-| `/tools` | ToolsPage.jsx | 실습도구 |
+| `/tools` | → `/learning` 리다이렉트 | (v2.6.0에서 학습하기에 통합) |
 | `/materials` | MaterialsPage.jsx | 실습자료 |
 | `/prompts` | PromptsPage.jsx | 프롬프트 템플릿 |
 | `/cases` | CasesPage.jsx | 산업·기관 사례 |
@@ -127,45 +127,12 @@
 
 ---
 
-## 4. ToolsPage (실습도구) — v2.0.0 전면 개편
+## 4. ToolsPage (실습도구) — v2.6.0에서 메뉴 제거
 
-**파일**: `src/pages/tools/ToolsPage.jsx`
-
-### 사이드바 + 콘텐츠 레이아웃 (8개 섹션)
-
-| 섹션 ID | 한국어 | 영어 | 아이콘 |
-|---------|--------|------|--------|
-| `overview` | 도구 개요 | Tools Overview | fa-grid-2 |
-| `chatgpt` | ChatGPT (GPT-4o) | ChatGPT (GPT-4o) | fa-comments |
-| `claude` | Claude (Sonnet/Opus) | Claude (Sonnet/Opus) | fa-file-lines |
-| `gemini` | Gemini | Gemini | fa-diamond |
-| `genspark` | Genspark | Genspark | fa-magnifying-glass-chart |
-| `perplexity` | Perplexity | Perplexity | fa-searchengin |
-| `napkin` | Napkin AI | Napkin AI | fa-chart-diagram |
-| `environment` | 실습 환경 안내 | Practice Environment | fa-laptop-code |
-
-### 도구별 상세 콘텐츠 구조
-1. 도구명, 카테고리, 설명
-2. **외부 링크** (실제 URL, `.tool-external-link` 클래스)
-3. **주요 기능** 5가지 (`framework-grid`)
-4. **유용한 팁** 5가지 (`info-box tip`)
-5. **활용 사례 및 프롬프트** 2개 (`example-box`)
-
-### 도구 URL
-| 도구 | URL |
-|------|-----|
-| ChatGPT | https://chat.openai.com |
-| Claude | https://claude.ai |
-| Gemini | https://gemini.google.com |
-| Genspark | https://www.genspark.ai |
-| Perplexity | https://www.perplexity.ai |
-| Napkin AI | https://www.napkin.ai |
-
-### overview 섹션
-기존 6개 도구 카드 요약 그리드 유지 (`tools-grid` 재사용), 클릭 시 상세 섹션으로 전환
-
-### environment 섹션
-노트북, 계정, 네트워크, 브라우저 요구사항 + 도구별 바로가기 링크
+> **Note**: v2.5.0에서 실습도구 콘텐츠가 LearningPage에 통합되었고, v2.6.0에서 상단 메뉴에서 제거됨.
+> `/tools` 접속 시 `/learning`으로 자동 리다이렉트.
+> 파일 `src/pages/tools/ToolsPage.jsx`는 코드베이스에 잔존하나 라우트에서 미사용.
+> 실습도구 상세 콘텐츠는 **1-1. LearningPage** 의 "실습도구" 그룹 참조.
 
 ---
 

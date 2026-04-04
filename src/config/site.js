@@ -13,7 +13,6 @@ export const MENU_ITEMS = [
   { id: 'learning', path: '/learning', nameKo: '학습하기', nameEn: 'Learning', icon: 'fa-book-open-reader' },
   { id: 'course', path: '/course', nameKo: '과정소개', nameEn: 'Course', icon: 'fa-book-open' },
 
-  { id: 'tools', path: '/tools', nameKo: '실습도구', nameEn: 'Tools', icon: 'fa-screwdriver-wrench' },
   { id: 'materials', path: '/materials', nameKo: '실습자료', nameEn: 'Materials', icon: 'fa-file-lines' },
   { id: 'prompts', path: '/prompts', nameKo: '프롬프트 템플릿', nameEn: 'Prompts', icon: 'fa-terminal' },
   { id: 'cases', path: '/cases', nameKo: '산업·기관 사례', nameEn: 'Cases', icon: 'fa-building' },

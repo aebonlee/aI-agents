@@ -63,7 +63,7 @@ export default function HeroCarousel() {
           title: t('hero.slide4Title'),
           highlight: t('hero.slide4Highlight'),
           description: t('hero.slide4Desc'),
-          cta1: { text: t('hero.cta1'), to: '/tools' },
+          cta1: { text: t('hero.cta1'), to: '/learning' },
           cta2: { text: t('hero.cta2'), to: '/prompts' },
         };
       case 4:

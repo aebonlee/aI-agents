@@ -7,7 +7,6 @@ const Home = lazy(() => import('../pages/Home'));
 const LearningPage = lazy(() => import('../pages/learning/LearningPage'));
 const CoursePage = lazy(() => import('../pages/course/CoursePage'));
 
-const ToolsPage = lazy(() => import('../pages/tools/ToolsPage'));
 const MaterialsPage = lazy(() => import('../pages/materials/MaterialsPage'));
 const PromptsPage = lazy(() => import('../pages/prompts/PromptsPage'));
 const CasesPage = lazy(() => import('../pages/cases/CasesPage'));
@@ -35,7 +34,7 @@ export default function PublicLayout() {
             <Route path="/learning" element={<LearningPage />} />
             <Route path="/course" element={<CoursePage />} />
             <Route path="/curriculum" element={<Navigate to="/course" replace />} />
-            <Route path="/tools" element={<ToolsPage />} />
+            <Route path="/tools" element={<Navigate to="/learning" replace />} />
             <Route path="/materials" element={<MaterialsPage />} />
             <Route path="/prompts" element={<PromptsPage />} />
             <Route path="/cases" element={<CasesPage />} />

@@ -877,7 +877,7 @@ export default function LearningPage() {
                     <p>{ko ? '8시간 기본과정부터 프로젝트형 확장까지' : 'From 8-hour basic to project extensions'}</p>
                   </div>
                   <div className="framework-item">
-                    <h4><Link to="/tools"><i className="fa-solid fa-screwdriver-wrench" aria-hidden="true" /> {ko ? '실습도구' : 'Practice Tools'}</Link></h4>
+                    <h4><button onClick={() => setActiveSection('tools-overview')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit', padding: 0 }}><i className="fa-solid fa-screwdriver-wrench" aria-hidden="true" /> {ko ? '실습도구' : 'Practice Tools'}</button></h4>
                     <p>{ko ? 'AI 도구와 실습 환경 소개' : 'AI tools and practice environment introduction'}</p>
                   </div>
                   <div className="framework-item">
