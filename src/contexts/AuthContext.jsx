@@ -1,11 +1,15 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
+import { useToast } from './ToastContext';
+import { useLanguage } from './LanguageContext';
 
 const AuthContext = createContext({});
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { showToast } = useToast();
+  const { t } = useLanguage();
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -21,28 +25,54 @@ export function AuthProvider({ children }) {
   }, []);
 
   const signInWithGoogle = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${window.location.origin}/`,
-      },
-    });
-    if (error) console.error('Google 로그인 에러:', error.message);
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/`,
+        },
+      });
+      if (error) {
+        console.error('Google login error:', error.message);
+        showToast(t('toast.loginError'), 'error');
+      }
+    } catch (err) {
+      console.error('Google login error:', err);
+      showToast(t('toast.loginError'), 'error');
+    }
   };
 
   const signInWithKakao = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'kakao',
-      options: {
-        redirectTo: `${window.location.origin}/`,
-      },
-    });
-    if (error) console.error('카카오 로그인 에러:', error.message);
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'kakao',
+        options: {
+          redirectTo: `${window.location.origin}/`,
+        },
+      });
+      if (error) {
+        console.error('Kakao login error:', error.message);
+        showToast(t('toast.loginError'), 'error');
+      }
+    } catch (err) {
+      console.error('Kakao login error:', err);
+      showToast(t('toast.loginError'), 'error');
+    }
   };
 
   const signOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) console.error('로그아웃 에러:', error.message);
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        console.error('Logout error:', error.message);
+        showToast(t('toast.logoutError'), 'error');
+      } else {
+        showToast(t('toast.logoutSuccess'), 'success');
+      }
+    } catch (err) {
+      console.error('Logout error:', err);
+      showToast(t('toast.logoutError'), 'error');
+    }
   };
 
   return (

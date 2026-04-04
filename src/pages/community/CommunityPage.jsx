@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useAuth } from '../../contexts/AuthContext';
+import { useToast } from '../../contexts/ToastContext';
 import { supabase, TABLES } from '../../lib/supabase';
 import SEOHead from '../../components/SEOHead';
 
@@ -34,6 +35,7 @@ function getInitial(name) {
 export default function CommunityPage() {
   const { language, t } = useLanguage();
   const { user } = useAuth();
+  const { showToast } = useToast();
   const isKo = language === 'ko';
 
   const [view, setView] = useState('list');
@@ -44,6 +46,7 @@ export default function CommunityPage() {
   const [selectedPost, setSelectedPost] = useState(null);
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   // Write/Edit form state
   const [formTitle, setFormTitle] = useState('');
@@ -57,27 +60,33 @@ export default function CommunityPage() {
   // Fetch posts
   const fetchPosts = useCallback(async () => {
     setLoading(true);
-    let query = supabase
-      .from(TABLES.POSTS)
-      .select('*, author:agent_profiles(display_name, avatar_url)')
-      .order('created_at', { ascending: false });
+    try {
+      let query = supabase
+        .from(TABLES.POSTS)
+        .select('*, author:agent_profiles(display_name, avatar_url)')
+        .order('created_at', { ascending: false });
 
-    if (activeCategory !== 'all') {
-      query = query.eq('category', activeCategory);
-    }
+      if (activeCategory !== 'all') {
+        query = query.eq('category', activeCategory);
+      }
 
-    if (searchQuery.trim()) {
-      query = query.or(`title.ilike.%${searchQuery.trim()}%,content.ilike.%${searchQuery.trim()}%`);
-    }
+      if (searchQuery.trim()) {
+        query = query.or(`title.ilike.%${searchQuery.trim()}%,content.ilike.%${searchQuery.trim()}%`);
+      }
 
-    const { data, error } = await query;
-    if (error) {
-      console.error('Posts fetch error:', error);
-    } else {
-      setPosts(data || []);
+      const { data, error } = await query;
+      if (error) {
+        console.error('Posts fetch error:', error);
+        showToast(t('toast.fetchPostsError'), 'error');
+      } else {
+        setPosts(data || []);
+      }
+    } catch (err) {
+      console.error('Posts fetch error:', err);
+      showToast(t('toast.fetchPostsError'), 'error');
     }
     setLoading(false);
-  }, [activeCategory, searchQuery]);
+  }, [activeCategory, searchQuery, showToast, t]);
 
   useEffect(() => {
     if (view === 'list') fetchPosts();
@@ -88,48 +97,99 @@ export default function CommunityPage() {
     setSelectedPostId(postId);
     setView('detail');
 
-    // Increment views
-    await supabase
-      .from(TABLES.POSTS)
-      .update({ views: (posts.find(p => p.id === postId)?.views || 0) + 1 })
-      .eq('id', postId);
+    // Increment views (silent - non-critical)
+    try {
+      await supabase
+        .from(TABLES.POSTS)
+        .update({ views: (posts.find(p => p.id === postId)?.views || 0) + 1 })
+        .eq('id', postId);
+    } catch (err) {
+      console.error('Views update error:', err);
+    }
 
     // Fetch post
-    const { data: postData } = await supabase
-      .from(TABLES.POSTS)
-      .select('*, author:agent_profiles(display_name, avatar_url)')
-      .eq('id', postId)
-      .single();
+    try {
+      const { data: postData, error } = await supabase
+        .from(TABLES.POSTS)
+        .select('*, author:agent_profiles(display_name, avatar_url)')
+        .eq('id', postId)
+        .single();
 
-    setSelectedPost(postData);
+      if (error) {
+        console.error('Post fetch error:', error);
+        showToast(t('toast.fetchPostError'), 'error');
+        return;
+      }
+      setSelectedPost(postData);
+    } catch (err) {
+      console.error('Post fetch error:', err);
+      showToast(t('toast.fetchPostError'), 'error');
+      return;
+    }
 
     // Fetch comments
-    const { data: commentData } = await supabase
-      .from(TABLES.COMMENTS)
-      .select('*, author:agent_profiles(display_name, avatar_url)')
-      .eq('post_id', postId)
-      .order('created_at', { ascending: true });
+    try {
+      const { data: commentData, error } = await supabase
+        .from(TABLES.COMMENTS)
+        .select('*, author:agent_profiles(display_name, avatar_url)')
+        .eq('post_id', postId)
+        .order('created_at', { ascending: true });
 
-    setComments(commentData || []);
+      if (error) {
+        console.error('Comments fetch error:', error);
+        showToast(t('toast.fetchCommentsError'), 'error');
+      } else {
+        setComments(commentData || []);
+      }
+    } catch (err) {
+      console.error('Comments fetch error:', err);
+      showToast(t('toast.fetchCommentsError'), 'error');
+    }
   };
 
   // Create / Update post
   const handleSubmitPost = async () => {
-    if (!formTitle.trim() || !formContent.trim()) return;
-
-    if (editingPostId) {
-      await supabase
-        .from(TABLES.POSTS)
-        .update({ title: formTitle, content: formContent, category: formCategory })
-        .eq('id', editingPostId);
-    } else {
-      await supabase
-        .from(TABLES.POSTS)
-        .insert({ author_id: user.id, title: formTitle, content: formContent, category: formCategory });
+    if (!formTitle.trim() || !formContent.trim()) {
+      showToast(t('toast.titleContentRequired'), 'error');
+      return;
     }
 
-    resetForm();
-    setView('list');
+    setSubmitting(true);
+    try {
+      if (editingPostId) {
+        const { error } = await supabase
+          .from(TABLES.POSTS)
+          .update({ title: formTitle, content: formContent, category: formCategory })
+          .eq('id', editingPostId);
+
+        if (error) {
+          console.error('Post update error:', error);
+          showToast(t('toast.updatePostError'), 'error');
+          setSubmitting(false);
+          return;
+        }
+        showToast(t('toast.updatePostSuccess'), 'success');
+      } else {
+        const { error } = await supabase
+          .from(TABLES.POSTS)
+          .insert({ author_id: user.id, title: formTitle, content: formContent, category: formCategory });
+
+        if (error) {
+          console.error('Post create error:', error);
+          showToast(t('toast.createPostError'), 'error');
+          setSubmitting(false);
+          return;
+        }
+        showToast(t('toast.createPostSuccess'), 'success');
+      }
+
+      resetForm();
+      setView('list');
+    } catch (err) {
+      console.error('Post submit error:', err);
+      showToast(editingPostId ? t('toast.updatePostError') : t('toast.createPostError'), 'error');
+    }
+    setSubmitting(false);
   };
 
   // Delete post
@@ -137,8 +197,21 @@ export default function CommunityPage() {
     const confirmMsg = isKo ? '정말 삭제하시겠습니까?' : 'Are you sure you want to delete?';
     if (!window.confirm(confirmMsg)) return;
 
-    await supabase.from(TABLES.POSTS).delete().eq('id', postId);
-    setView('list');
+    setSubmitting(true);
+    try {
+      const { error } = await supabase.from(TABLES.POSTS).delete().eq('id', postId);
+      if (error) {
+        console.error('Post delete error:', error);
+        showToast(t('toast.deletePostError'), 'error');
+      } else {
+        showToast(t('toast.deletePostSuccess'), 'success');
+        setView('list');
+      }
+    } catch (err) {
+      console.error('Post delete error:', err);
+      showToast(t('toast.deletePostError'), 'error');
+    }
+    setSubmitting(false);
   };
 
   // Edit post
@@ -154,20 +227,45 @@ export default function CommunityPage() {
   const handleSubmitComment = async () => {
     if (!commentText.trim() || !selectedPostId) return;
 
-    await supabase
-      .from(TABLES.COMMENTS)
-      .insert({ post_id: selectedPostId, author_id: user.id, content: commentText });
+    setSubmitting(true);
+    try {
+      const { error } = await supabase
+        .from(TABLES.COMMENTS)
+        .insert({ post_id: selectedPostId, author_id: user.id, content: commentText });
 
-    setCommentText('');
+      if (error) {
+        console.error('Comment create error:', error);
+        showToast(t('toast.createCommentError'), 'error');
+        setSubmitting(false);
+        return;
+      }
 
-    // Refresh comments
-    const { data } = await supabase
-      .from(TABLES.COMMENTS)
-      .select('*, author:agent_profiles(display_name, avatar_url)')
-      .eq('post_id', selectedPostId)
-      .order('created_at', { ascending: true });
+      showToast(t('toast.createCommentSuccess'), 'success');
+      setCommentText('');
 
-    setComments(data || []);
+      // Refresh comments
+      try {
+        const { data, error: fetchError } = await supabase
+          .from(TABLES.COMMENTS)
+          .select('*, author:agent_profiles(display_name, avatar_url)')
+          .eq('post_id', selectedPostId)
+          .order('created_at', { ascending: true });
+
+        if (fetchError) {
+          console.error('Comments refresh error:', fetchError);
+          showToast(t('toast.fetchCommentsError'), 'error');
+        } else {
+          setComments(data || []);
+        }
+      } catch (fetchErr) {
+        console.error('Comments refresh error:', fetchErr);
+        showToast(t('toast.fetchCommentsError'), 'error');
+      }
+    } catch (err) {
+      console.error('Comment create error:', err);
+      showToast(t('toast.createCommentError'), 'error');
+    }
+    setSubmitting(false);
   };
 
   // Delete comment
@@ -175,9 +273,21 @@ export default function CommunityPage() {
     const confirmMsg = isKo ? '댓글을 삭제하시겠습니까?' : 'Delete this comment?';
     if (!window.confirm(confirmMsg)) return;
 
-    await supabase.from(TABLES.COMMENTS).delete().eq('id', commentId);
-
-    setComments(prev => prev.filter(c => c.id !== commentId));
+    setSubmitting(true);
+    try {
+      const { error } = await supabase.from(TABLES.COMMENTS).delete().eq('id', commentId);
+      if (error) {
+        console.error('Comment delete error:', error);
+        showToast(t('toast.deleteCommentError'), 'error');
+      } else {
+        showToast(t('toast.deleteCommentSuccess'), 'success');
+        setComments(prev => prev.filter(c => c.id !== commentId));
+      }
+    } catch (err) {
+      console.error('Comment delete error:', err);
+      showToast(t('toast.deleteCommentError'), 'error');
+    }
+    setSubmitting(false);
   };
 
   const resetForm = () => {
@@ -358,11 +468,11 @@ export default function CommunityPage() {
 
                 {user && user.id === selectedPost.author_id && (
                   <div className="post-actions">
-                    <button className="post-action-btn" onClick={() => handleEditPost(selectedPost)}>
+                    <button className="post-action-btn" onClick={() => handleEditPost(selectedPost)} disabled={submitting}>
                       <i className="fa-solid fa-pen" />
                       {isKo ? '수정' : 'Edit'}
                     </button>
-                    <button className="post-action-btn" onClick={() => handleDeletePost(selectedPost.id)}>
+                    <button className="post-action-btn" onClick={() => handleDeletePost(selectedPost.id)} disabled={submitting}>
                       <i className="fa-solid fa-trash" />
                       {isKo ? '삭제' : 'Delete'}
                     </button>
@@ -391,9 +501,11 @@ export default function CommunityPage() {
                         placeholder={isKo ? '댓글을 작성하세요...' : 'Write a comment...'}
                         value={commentText}
                         onChange={e => setCommentText(e.target.value)}
+                        disabled={submitting}
                       />
                       <div className="comment-form-actions">
-                        <button className="comment-submit-btn" onClick={handleSubmitComment}>
+                        <button className="comment-submit-btn" onClick={handleSubmitComment} disabled={submitting || !commentText.trim()}>
+                          {submitting ? <i className="fa-solid fa-spinner fa-spin" /> : null}
                           {isKo ? '등록' : 'Submit'}
                         </button>
                       </div>
@@ -419,7 +531,7 @@ export default function CommunityPage() {
                         <p className="comment-text">{comment.content}</p>
                         {user && user.id === comment.author_id && (
                           <div className="comment-actions">
-                            <button className="comment-action" onClick={() => handleDeleteComment(comment.id)}>
+                            <button className="comment-action" onClick={() => handleDeleteComment(comment.id)} disabled={submitting}>
                               {isKo ? '삭제' : 'Delete'}
                             </button>
                           </div>
@@ -456,6 +568,7 @@ export default function CommunityPage() {
           <select
             value={formCategory}
             onChange={e => setFormCategory(e.target.value)}
+            disabled={submitting}
             style={{
               padding: '8px 16px', fontSize: 14, fontFamily: 'inherit',
               border: '1px solid var(--border-light)', borderRadius: 'var(--radius-full)',
@@ -474,6 +587,7 @@ export default function CommunityPage() {
             placeholder={isKo ? '제목을 입력하세요' : 'Enter title'}
             value={formTitle}
             onChange={e => setFormTitle(e.target.value)}
+            disabled={submitting}
           />
 
           <textarea
@@ -482,21 +596,23 @@ export default function CommunityPage() {
             placeholder={isKo ? '내용을 입력하세요' : 'Write your content here...'}
             value={formContent}
             onChange={e => setFormContent(e.target.value)}
+            disabled={submitting}
           />
 
           <div className="write-post-actions">
             <button
               className="post-action-btn"
               onClick={() => { resetForm(); setView('list'); }}
+              disabled={submitting}
             >
               {isKo ? '취소' : 'Cancel'}
             </button>
             <button
               className="community-write-btn"
               onClick={handleSubmitPost}
-              disabled={!formTitle.trim() || !formContent.trim()}
+              disabled={submitting || !formTitle.trim() || !formContent.trim()}
             >
-              <i className="fa-solid fa-check" />
+              {submitting ? <i className="fa-solid fa-spinner fa-spin" style={{ marginRight: 6 }} /> : <i className="fa-solid fa-check" />}
               {editingPostId ? (isKo ? '수정완료' : 'Update') : (isKo ? '등록' : 'Publish')}
             </button>
           </div>

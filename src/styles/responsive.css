@@ -300,6 +300,10 @@
     .not-found-code { font-size: 64px; }
     .not-found-title { font-size: 18px; }
     .not-found-desc { font-size: 14px; }
+
+    /* Toast */
+    .toast-container { right: 16px; left: 16px; }
+    .toast { min-width: auto; max-width: 100%; }
 }
 
 /* ===== Small Mobile (under 400px) ===== */

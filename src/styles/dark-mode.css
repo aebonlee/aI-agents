@@ -489,3 +489,20 @@ html[data-theme="dark"] .copy-btn.copied {
     background: rgba(42, 175, 122, 0.12);
     border-color: #2AAF7A;
 }
+
+/* Toast Dark */
+html[data-theme="dark"] .toast-success {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.2);
+    color: #6EE7B7;
+}
+html[data-theme="dark"] .toast-error {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.2);
+    color: #FCA5A5;
+}
+html[data-theme="dark"] .toast-info {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.2);
+    color: #93C5FD;
+}
