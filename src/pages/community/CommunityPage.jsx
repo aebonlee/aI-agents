@@ -202,10 +202,12 @@ export default function CommunityPage() {
   if (view === 'list') {
     return (
       <div className="community-page">
-        <section className="page-header">
-          <h1>{t('community.title')}</h1>
-          <p className="page-desc">{t('community.subtitle')}</p>
-        </section>
+        <div className="page-header">
+          <div className="container">
+            <h1>{t('community.title')}</h1>
+            <p className="page-desc">{t('community.subtitle')}</p>
+          </div>
+        </div>
 
         <div className="community-layout">
           <div className="community-toolbar">
@@ -303,10 +305,12 @@ export default function CommunityPage() {
   if (view === 'detail') {
     return (
       <div className="community-page">
-        <section className="page-header">
-          <h1>{t('community.title')}</h1>
-          <p className="page-desc">{t('community.subtitle')}</p>
-        </section>
+        <div className="page-header">
+          <div className="container">
+            <h1>{t('community.title')}</h1>
+            <p className="page-desc">{t('community.subtitle')}</p>
+          </div>
+        </div>
 
         <div className="post-detail">
           <button
@@ -436,10 +440,12 @@ export default function CommunityPage() {
   // ===== WRITE / EDIT VIEW =====
   return (
     <div className="community-page">
-      <section className="page-header">
-        <h1>{editingPostId ? (isKo ? '게시글 수정' : 'Edit Post') : (isKo ? '글쓰기' : 'Write Post')}</h1>
-        <p className="page-desc">{isKo ? '커뮤니티에 글을 작성합니다' : 'Write a post for the community'}</p>
-      </section>
+      <div className="page-header">
+        <div className="container">
+          <h1>{editingPostId ? (isKo ? '게시글 수정' : 'Edit Post') : (isKo ? '글쓰기' : 'Write Post')}</h1>
+          <p className="page-desc">{isKo ? '커뮤니티에 글을 작성합니다' : 'Write a post for the community'}</p>
+        </div>
+      </div>
 
       <div className="write-post-page">
         <div className="write-post-card">
