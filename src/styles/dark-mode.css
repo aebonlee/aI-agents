@@ -474,3 +474,18 @@ html[data-theme="dark"] .sidebar-nav-group-count {
     background: var(--bg-light-gray);
     color: var(--text-light);
 }
+html[data-theme="dark"] .copy-btn {
+    color: var(--text-light);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--border-light);
+}
+html[data-theme="dark"] .copy-btn:hover {
+    color: var(--primary-blue-light);
+    background: rgba(61, 109, 181, 0.12);
+    border-color: var(--primary-blue-light);
+}
+html[data-theme="dark"] .copy-btn.copied {
+    color: #2AAF7A;
+    background: rgba(42, 175, 122, 0.12);
+    border-color: #2AAF7A;
+}

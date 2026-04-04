@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import SEOHead from '../../components/SEOHead';
 
@@ -583,8 +583,16 @@ Create a management briefing document based on the information below.
 export default function PromptsPage() {
   const { language, t } = useLanguage();
   const [activeType, setActiveType] = useState('research');
+  const [copiedId, setCopiedId] = useState(null);
   const ko = language === 'ko';
   const template = TEMPLATES[activeType];
+
+  const handleCopy = useCallback((text, id) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopiedId(id);
+      setTimeout(() => setCopiedId(null), 2000);
+    });
+  }, []);
 
   return (
     <div className="content-page">
@@ -621,18 +629,33 @@ export default function PromptsPage() {
               <h2>{ko ? template.titleKo : template.titleEn}</h2>
               <p>{ko ? template.descKo : template.descEn}</p>
 
-              {template.examples.map((example, idx) => (
-                <div key={idx} style={{ marginTop: idx > 0 ? '32px' : '20px' }}>
-                  <h3>
-                    <i className="fa-solid fa-code" aria-hidden="true" style={{ marginRight: '8px' }} />
-                    {ko ? example.titleKo : example.titleEn}
-                  </h3>
-                  <div className="example-box">
-                    <h4>{ko ? '프롬프트 템플릿' : 'Prompt Template'}</h4>
-                    <pre>{ko ? example.promptKo : example.promptEn}</pre>
+              {template.examples.map((example, idx) => {
+                const promptText = ko ? example.promptKo : example.promptEn;
+                const copyId = `${activeType}-${idx}`;
+                const isCopied = copiedId === copyId;
+                return (
+                  <div key={idx} style={{ marginTop: idx > 0 ? '32px' : '20px' }}>
+                    <h3>
+                      <i className="fa-solid fa-code" aria-hidden="true" style={{ marginRight: '8px' }} />
+                      {ko ? example.titleKo : example.titleEn}
+                    </h3>
+                    <div className="example-box">
+                      <div className="example-box-header">
+                        <h4>{ko ? '프롬프트 템플릿' : 'Prompt Template'}</h4>
+                        <button
+                          className={`copy-btn ${isCopied ? 'copied' : ''}`}
+                          onClick={() => handleCopy(promptText, copyId)}
+                          aria-label={ko ? '복사' : 'Copy'}
+                        >
+                          <i className={`fa-solid ${isCopied ? 'fa-check' : 'fa-copy'}`} aria-hidden="true" />
+                          <span>{isCopied ? (ko ? '복사됨' : 'Copied') : (ko ? '복사' : 'Copy')}</span>
+                        </button>
+                      </div>
+                      <pre>{promptText}</pre>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
 
               <div className="info-box tip" style={{ marginTop: '24px' }}>
                 <h4>{ko ? '활용 팁' : 'Usage Tips'}</h4>

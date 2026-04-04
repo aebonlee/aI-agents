@@ -272,13 +272,48 @@
     padding: 24px;
     margin: 16px 0;
 }
+.example-box-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
 .example-box h4 {
     font-size: 13px;
     font-weight: 700;
     color: var(--text-light);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 12px;
+    margin-bottom: 0;
+}
+.copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: inherit;
+    color: var(--text-light);
+    background: var(--bg-medium-gray);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: var(--transition-base);
+    white-space: nowrap;
+}
+.copy-btn:hover {
+    color: var(--primary-blue);
+    background: rgba(27, 58, 107, 0.08);
+    border-color: var(--primary-blue-light);
+}
+.copy-btn.copied {
+    color: #00855A;
+    background: rgba(0, 133, 90, 0.08);
+    border-color: #00855A;
+}
+.copy-btn i {
+    font-size: 11px;
 }
 .example-box pre {
     background: #1E293B;
