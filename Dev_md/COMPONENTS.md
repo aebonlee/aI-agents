@@ -147,8 +147,9 @@ Home, Course, Curriculum, Tools, Prompts, Cases, FAQ
 
 ### 기능
 - 4개 콘텐츠 페이지(CoursePage, CasesPage, ToolsPage, LearningPage)에서 공통 사용하는 아코디언 사이드바
-- 그룹별 접기/펼치기 (다중 열기 가능)
+- 그룹별 접기/펼치기 (단일 열기 — 다른 그룹 열면 기존 그룹 자동 닫힘)
 - activeId 변경 시 해당 그룹 자동 펼침
+- 그룹 토글에만 아이콘 표시, 개별 아이템은 텍스트만 표시 (가독성 우선)
 - grid-template-rows 0fr→1fr CSS-only 애니메이션
 - 태블릿/모바일에서 그룹 토글 숨기고 플랫 레이아웃 자동 전환
 
@@ -165,7 +166,7 @@ Home, Course, Curriculum, Tools, Prompts, Cases, FAQ
 ### 상태
 | 상태 | 타입 | 설명 |
 |------|------|------|
-| `openGroups` | Set | 열린 그룹 ID 집합 (다중 열기) |
+| `openGroup` | string \| null | 현재 열린 그룹 ID (단일 열기) |
 
 ### 사용 페이지별 그룹 구성
 
