@@ -2,6 +2,8 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
+import { LicenseProvider } from '../components/LicenseGuard';
+import LockOverlay from '../components/LockOverlay';
 
 const Home = lazy(() => import('../pages/Home'));
 const LearningPage = lazy(() => import('../pages/learning/LearningPage'));
@@ -24,6 +26,7 @@ const Loading = () => (
 
 export default function PublicLayout() {
   return (
+    <LicenseProvider>
     <>
       <a href="#main-content" className="skip-nav">본문 바로가기</a>
       <Navbar />
@@ -47,6 +50,8 @@ export default function PublicLayout() {
         </Suspense>
       </main>
       <Footer />
+      <LockOverlay />
     </>
+    </LicenseProvider>
   );
 }
