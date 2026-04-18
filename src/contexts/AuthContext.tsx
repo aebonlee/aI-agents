@@ -3,6 +3,7 @@ import { supabase, setSharedSession, getSharedSession, clearSharedSession } from
 import { isAdmin as isAdminEmail } from '../config/admin';
 import { useToast } from './ToastContext';
 import { useLanguage } from './LanguageContext';
+import { useIdleTimeout } from '../hooks/useIdleTimeout';
 
 const AuthContext = createContext({});
 
@@ -35,6 +36,16 @@ export function AuthProvider({ children }) {
 
       setUser(session?.user ?? null);
     });
+
+
+  // 10분 무동작 세션 타임아웃
+  useIdleTimeout({
+    enabled: !!user,
+    onTimeout: () => {
+      supabase.auth.signOut();
+      clearSharedSession();
+    },
+  });
 
     return () => subscription.unsubscribe();
   }, []);
